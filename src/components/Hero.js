@@ -49,56 +49,59 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative h-screen overflow-hidden bg-black">
-      {/* Background gradient wave effect */}
-      <div className="absolute inset-0 wave-bg">
-        <div className="hero-gradient opacity-70 w-full h-full"></div>
-      </div>
+      <section className="relative h-screen overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-700 opacity-80 z-0"></div>
+        <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+        <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
+          {/*/!* Background gradient wave effect *!/*/}
+          {/*<div className="absolute inset-0 wave-bg">*/}
+          {/*  <div className="hero-gradient opacity-70 w-full h-full"></div>*/}
+          {/*</div>*/}
 
-      <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
-        <div className="mt-20 md:mt-0">
-          <Slider {...sliderSettings}>
-            {heroContent.map((content, index) => (
-              <div key={index} className="outline-none">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-white max-w-3xl"
-                >
-                  <h1 className="text-4xl md:text-6xl font-bold mb-8">{content.title}</h1>
-                  <a href={content.buttonLink} className="btn-primary inline-block">
-                    {content.buttonText}
-                  </a>
-                </motion.div>
+          {/*<div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">*/}
+            <div className="mt-20 md:mt-0">
+              <Slider {...sliderSettings}>
+                {heroContent.map((content, index) => (
+                    <div key={index} className="outline-none">
+                      <motion.div
+                          initial={{opacity: 0, y: 20}}
+                          animate={{opacity: 1, y: 0}}
+                          transition={{duration: 0.5}}
+                          className="text-white max-w-3xl"
+                      >
+                        <h1 className="text-4xl md:text-6xl font-bold mb-8">{content.title}</h1>
+                        <a href={content.buttonLink} className="btn-primary inline-block">
+                          {content.buttonText}
+                        </a>
+                      </motion.div>
+                    </div>
+                ))}
+              </Slider>
+            </div>
+
+            {/* Slider controls */}
+            <div className="absolute bottom-20 left-0 right-0">
+              <div className="container mx-auto px-6">
+                <div className="flex flex-wrap items-center">
+                  {tabs.map((tab, index) => (
+                      <button
+                          key={tab.id}
+                          className={`mr-4 mb-2 px-4 py-2 text-sm rounded-full transition-all ${
+                              activeTab === index
+                                  ? 'bg-white bg-opacity-20 text-white'
+                                  : 'text-white text-opacity-70 hover:text-opacity-100'
+                          }`}
+                          onClick={() => setActiveTab(index)}
+                      >
+                        {tab.label}
+                      </button>
+                  ))}
+                </div>
               </div>
-            ))}
-          </Slider>
-        </div>
-
-        {/* Slider controls */}
-        <div className="absolute bottom-20 left-0 right-0">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-wrap items-center">
-              {tabs.map((tab, index) => (
-                <button
-                  key={tab.id}
-                  className={`mr-4 mb-2 px-4 py-2 text-sm rounded-full transition-all ${
-                    activeTab === index 
-                      ? 'bg-white bg-opacity-20 text-white' 
-                      : 'text-white text-opacity-70 hover:text-opacity-100'
-                  }`}
-                  onClick={() => setActiveTab(index)}
-                >
-                  {tab.label}
-                </button>
-              ))}
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
+      </section>
+);
 };
 
 export default Hero;
