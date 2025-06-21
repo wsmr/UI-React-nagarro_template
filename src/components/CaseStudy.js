@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// import BunnyGirlImage from './assets/Bunny-Girl-3D-Character.png'; // Adjust the path as needed
+
 const CaseStudy = () => {
   return (
     <section className="py-20">
@@ -26,7 +28,7 @@ const CaseStudy = () => {
               </a>
             </motion.div>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -35,9 +37,11 @@ const CaseStudy = () => {
             className="relative"
           >
             <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg overflow-hidden">
-              <img 
-                src="https://via.placeholder.com/600x400/FF69B4/FFFFFF?text=Bunny+Girl+3D" 
-                alt="Bunny Girl 3D Character" 
+              <img
+                /*src="https://via.placeholder.com/600x400/FF69B4/FFFFFF?text=Bunny+Girl+3D"*/
+                  // src={BunnyGirlImage}
+                  src="/assets/Bunny-Girl-3D-Character.jpg"
+                  alt="Bunny Girl 3D Character"
                 className="w-full h-auto"
               />
             </div>
